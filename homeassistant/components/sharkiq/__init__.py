@@ -47,6 +47,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
         username=config_entry.data[CONF_USERNAME],
         password=config_entry.data[CONF_PASSWORD],
         websession=async_get_clientsession(hass),
+        europe=config_entry.data["Europe"],
     )
 
     try:
