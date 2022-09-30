@@ -18,7 +18,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from .const import DOMAIN, LOGGER
 
 SHARKIQ_SCHEMA = vol.Schema(
-    {vol.Required(CONF_USERNAME): str, vol.Required(CONF_PASSWORD): str}
+    {vol.Required(CONF_USERNAME): str, vol.Required(CONF_PASSWORD): str}, vol.Required("Europe"): bool}
 )
 
 
@@ -30,6 +30,7 @@ async def _validate_input(
         username=data[CONF_USERNAME],
         password=data[CONF_PASSWORD],
         websession=async_get_clientsession(hass),
+        europe=data["Europe"]
     )
 
     try:
